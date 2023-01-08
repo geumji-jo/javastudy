@@ -1,5 +1,4 @@
 package ex01_branch;
-
 public class Ex04_switch {
 
 	/* 	switch(표현식) {
@@ -85,8 +84,8 @@ public class Ex04_switch {
 		
 		//1분기(1~3),2분기(4~6),3분기(7~9),4분기(10~12)
 		
-		int month = 1;
-		
+		int month =1;
+	
 		switch(month) {
 		case 1: case 2: case 3:
 			System.out.println("1분기");
