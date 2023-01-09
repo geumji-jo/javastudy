@@ -18,8 +18,6 @@ public class Ex04_switch {
 	    - double
 	 */
 	
-	
-	
 	public static void ex01() {
 		
 		int month = 1;
