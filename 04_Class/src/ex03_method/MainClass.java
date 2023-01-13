@@ -2,7 +2,7 @@ package ex03_method;
 
 public class MainClass {
 	
-	public static void ex01() {
+	public static void ex01() {		//계산기
 		
 		//calculator  객체 선언 + 생성
 		Calculator calc = new Calculator();
@@ -15,7 +15,7 @@ public class MainClass {
 		
 	} 
 	
-	public static void ex02() {
+	public static void ex02() {		// 커피머신
 		
 		CoffeeMachine coffeeMachine = new CoffeeMachine();		
 		
@@ -27,7 +27,7 @@ public class MainClass {
 		
 	}
 
-	public static void ex03() {
+	public static void ex03() {		//자동차
 		
 		Car car = new Car();
 		

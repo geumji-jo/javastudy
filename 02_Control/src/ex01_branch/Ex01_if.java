@@ -6,13 +6,13 @@ public class Ex01_if {
 		
 		// if 문
 		
-		int score = 80;
+		int score = 50;
 		
-		if(score >= 60);
-		System.out.println("합격");
+		if(score >= 60)
+			System.out.println("합격");
 		
-		if(score < 60);
-		System.out.println("불합격");
+		if(score < 60)
+			System.out.println("불합격");		
 		
 	}
 	
@@ -37,7 +37,7 @@ public class Ex01_if {
 	}
 
 	public static void main(String[] args) {
-		ex02();
+		ex01();
 	}
 
 }
