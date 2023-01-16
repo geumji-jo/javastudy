@@ -239,20 +239,110 @@ public class MainClass {
 		 
 	 }
 	 
-	public static void ex01() {
-		 
-		 String url = "https://comic.naver.com/webtoon/detail?titleId=758037&no=112&weekday=mon";
-		 
-		 String requestURI = url.substring(0, url.indexOf("?"));
-		  
-		 System.out.println(requestURI);
-		 
-		 
-		 String params = url.substring(url.indexOf("?" + 1));
-		 System.out.println(params);
+	public static void trim() {
+		
+		// trim
+		// 문자열의 앞뒤에 포함 된 공백 문자(스페이스, 탭, 엔터 등)를 제거
+		
+		String str = "   hahaha   hohoho   ";
+		
+		System.out.println("(" + str +")");
+		System.out.println("(" + str.trim() +")");
+	}
 	
-			 
-		 }
+	public static void replace() {
+		
+		//replace
+		// 기존 문자열을 새로운 문자열로 변환한 결과를 반환
+		
+		//replace 사용법
+		// replace(String str1, String str2)
+		// 모든 str1을 str2로 변환
+		
+		String str = "best of the best";
+		String result = str.replace("best", "must");
+		
+		System.out.println(result);
+	
+	
+		//replaceAll
+		//정규식 패턴(Regular Expression)을 만족하는 부분을 변환한 결과를 반환 
+		//회원가입시 내용이 맞는지 체크할때 사용하면 유용
+		
+		String ip = "61.78.121.242";
+		String replacedIp = ip.replaceAll(".", "_");	//61_78_121_242을 기대하지만 다른 정답이 나옴(정규식에서 마침표는 모든 문자를 의미함)
+		System.out.println(replacedIp);
+
+		}	
+	
+	public static void isEmpty() {
+		
+		//isEmpty
+		// 빈 문자열이면 true 반환
+		// 빈 문자열("") : 문자열의 길이가 0이면 빈 문자열
+		
+		String str = "";
+		if(str.trim().isEmpty()) {
+			System.out.println("빈 문자열이다.");
+			
+		}else {
+			System.out.println("빈 문자열이 아니다.");
+		}
+		
+		// isBlank
+		// 빈 문자열이거나 공백 문자로만 구성되었다면 true 반환
+		// JDK 11 이후에서만 사용 가능
+		if(str.isBlank()) {
+			System.out.println("빈 문자열이다.");
+		}else {
+			System.out.println("빈 문자열이 아니다.");
+		}
+		
+	}
+		
+	public static void format() {
+		
+		
+		//  format
+		//  문자열을 지정한 형식으로 반환
+		
+		// 숫자 형식 지정하기
+		int number = 1000;
+		System.out.println(String.format("%o", number)); // %o : 8진수로 표시하시오.
+		System.out.println(String.format("%d", number)); // %d : 10진수로 표시하시오.
+		System.out.println(String.format("%x", number)); // %x : 16진수로 표시하시오.(0~9,a,b,c,d,e,f)
+		System.out.println(String.format("%X", number)); // %X : 16진수로 표시하시오.(0~9,A,B,C,D,E,F)
+		
+		// 문자열 형식 지정하기
+		String str = "hi";
+		System.out.println(String.format("%s", str)); // %s : 문자열로 표시하시오.
+		
+		
+		// 출력 폭 조정하기
+		System.out.println(String.format("%10d", number));	//%10d : 10자리로 표시하시오.숫자는 오른쪽에 표시하시오.
+		System.out.println(String.format("%-10d", number));	//%-10d : 10자리로 표시하시오.숫자는 왼쪽내ㅔ에 표시하시오.
+		System.out.println(String.format("%5s", str));
+		System.out.println(String.format("%-5s", str));
+		
+		
+		
+	}
+
+	public static void ex01() {
+
+	 
+	 String url = "https://comic.naver.com/webtoon/detail?titleId=758037&no=112&weekday=mon";
+	 
+	 String requestURI = url.substring(0, url.indexOf("?"));
+	  
+	 System.out.println(requestURI);
+	 
+	 
+	 String params = url.substring(url.indexOf("?" + 1));
+	 System.out.println(params);
+
+		 
+	 }
 		 
 	public static void ex02() {
 		 
@@ -276,7 +366,7 @@ public class MainClass {
 	 }
 		 
 	public static void main(String[] args) {
-		toCase();
+		format();
 	
 	}
 
