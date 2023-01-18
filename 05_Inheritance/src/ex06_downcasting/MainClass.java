@@ -31,7 +31,7 @@ public static void ex02() {
 		student.eat();
 		student.sleep();
 		student.study(); // 오류 발생 부분
-		
+}
 public static void ex03() {
 	
 	// Person

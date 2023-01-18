@@ -5,7 +5,7 @@ public class Ex01_String {
 	
 	public static void literal() {
 		
-		// 문자열 리터럴(Literal0
+		// 문자열 리터럴(Literal)
 		
 		String str1 = "hello";
 		String str2 = "hello";

@@ -1,4 +1,4 @@
-package ex02_random;
+package ex02_Random;
 
 public class Ex01_Math_random {
 	

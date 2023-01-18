@@ -8,6 +8,8 @@ public class MainClass {
 	public static void ex01() {
 		int number = 5;
 		int absNumber;
+		
+		
 		if(number >= 0) {
 			absNumber = number;
 		}else {
@@ -103,11 +105,17 @@ public class MainClass {
 					money %= unit[i];
 					System.out.println(unit[i]+ "원권 : " + count[i] +  "개");
 		}
+		
+		
 		//count[0] = money /  unit[0];
 		//money = money % unit[0];
 		
 		//count[1] = money / unit[1];
 		//money = money % unit[1];
+		//.
+		//.
+		//.
+		//count[9] = money / unit[9];
 		System.out.println(Arrays.toString(unit));
 		System.out.println(Arrays.toString(count));
 	}		
@@ -162,7 +170,7 @@ public class MainClass {
 	 */
 	
 	public static void main(String[] args) {
-		ex07();
+		ex06();
 
 	}
 
