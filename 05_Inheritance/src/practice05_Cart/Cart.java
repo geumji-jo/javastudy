@@ -59,10 +59,10 @@ public class Cart {
 		}
 		// 카트에서 물건 빼기
 		for(int i = 0; i < prodCount; i++) {
-			if(products[i].getProdName() == prodNo) {
-				products[i] = products[--prodCount]; //마지막 물건을 뺀 물건 자리로 옮기기
+			if(products[i].getProdNo() == prodNo) {
+				products[i] = products[prodCount - 1];  // 마지막 물건을 뺀 물건 자리로 옮기기
+				products[--prodCount] = null;  // 마지막 물건 자리에 null 넣고, 카트에 담긴 물건 수 줄이기
 				break;
-				
 			}
 		}
 	}
