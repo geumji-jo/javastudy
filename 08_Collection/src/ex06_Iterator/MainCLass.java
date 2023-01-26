@@ -2,9 +2,11 @@ package ex06_Iterator;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class MainCLass {
@@ -55,8 +57,28 @@ public class MainCLass {
 		
 		
 	}
+	
+	public static void ex03() {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("name", "조은지");
+		map.put("age", "29");
+		map.put("isAlive", true);
+		
+		Set<String> keySet = map.keySet();
+		
+		Iterator<String> itr = keySet.iterator();
+		
+		while(itr.hasNext()) {
+			String key = itr.next();
+			Object value = map.get(key);
+			
+			System.out.println(key + ":" +value);
+		}
+	}
 	public static void main(String[] args) {
-		ex02();
+		ex03();
 		
 		
 	

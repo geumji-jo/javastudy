@@ -1,5 +1,7 @@
 package practice01;
 
+import java.util.Scanner;
+
 public class MainClass {
 
 	// 문제1. 가위바위보
@@ -45,6 +47,21 @@ public class MainClass {
 	// 사용자로부터 비밀번호를 입력 받아서 "1234"와 같으면 "성공", "1234"가 아니면 다시 비밀번호를 입력 받도록 처리하시오.
 	// 비밀번호 입력은 최대 5번으로 제한하고, 5번의 입력이 모두 틀리면 최종적으로 "실패"를 출력하시오.
 	public static void ex06() {
+		// 비밀번호 1234로 초기화해주기
+		//사용자로 부터 비밀번호 입력받는 메서드 생성(스캐너)
+		//1) 비밀번호와 똑같으면 "성공" 출력 / "1234"가 아니면 다시 비밀번호를 입력받는 메서드 호출
+		//2) 비밀번호 입력은 최대 5번으로 제한,
+		//   5번 입력 모두틀리면 "실패" 도출
+		String pwd = "1234";
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i = 0; i <5; i++) {
+			System.out.println("비밀번호를 입력하세요. >>> ");
+			String e =  sc.next();
+				 = pwd.equals(e);
+				
+		}
+		
 		
 	}		
 	

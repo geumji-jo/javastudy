@@ -2,6 +2,8 @@ package practice01;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainClass {
@@ -115,8 +117,8 @@ public class MainClass {
 	// 사용자로부터 비밀번호를 입력 받아서 "1234"와 같으면 "성공", "1234"가 아니면 다시 비밀번호를 입력 받도록 처리하시오.
 	// 비밀번호 입력은 최대 5번으로 제한하고, 5번의 입력이 모두 틀리면 최종적으로 "실패"를 출력하시오.
 	public static void ex06() {
-		Scanner sc = new Scanner(System.in);
 		String pwd = "1234";
+		Scanner sc = new Scanner(System.in);
 		boolean isSuccess = false;
 		for (int a = 0; a < 5; a++) {
 			System.out.print("비밀번호? >>> ");
@@ -159,7 +161,7 @@ public class MainClass {
 	// 예시)
 	// 28살 여자입니다.
 	public static void ex08() {
-		String personalId = "141212-3345678";
+		String personalId = "001212-4345678";
 		Calendar calendar = Calendar.getInstance();
 		int nowYear = calendar.get(Calendar.YEAR);
 		int genderNo = Integer.parseInt(personalId.substring(7, 8));
@@ -192,7 +194,9 @@ public class MainClass {
 		System.out.print("변환 전 파일명 >>> ");
 		beforeName = sc.next();
 		String fileName = beforeName.substring(0, beforeName.lastIndexOf(".")) + "_" + System.currentTimeMillis();
+		System.out.println(fileName);
 		String extName = beforeName.substring(beforeName.lastIndexOf("."));
+		System.out.println(extName);
 		afterName = fileName + extName;
 		System.out.println("변환 후 파일명 = " + afterName);
 		sc.close();
@@ -208,12 +212,14 @@ public class MainClass {
 	// 이름 입력 >>> 유재석
 	// 처음 뵙겠습니다
 	public static void ex10() {
-		String[] friends = {"전지현", "정우성", "한지민"};
+		// String[] friends = {"정우성", "한지민", "전지현"};
+		List<String> friends = Arrays.asList("정우성", "한지민", "전지현");
 		String name;
+		Collections.sort(friends);
 		Scanner sc = new Scanner(System.in);
 		System.out.print("이름 입력 >>> ");
 		name = sc.next();
-		if(Arrays.binarySearch(friends, name) >= 0) {
+		if(Collections.binarySearch(friends, name) >= 0) {
 			System.out.println("반갑다 친구야");
 		} else {
 			System.out.println("처음 뵙겠습니다");
@@ -222,7 +228,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex10();
 	}
 
 }
