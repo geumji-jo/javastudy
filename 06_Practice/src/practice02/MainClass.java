@@ -1,6 +1,11 @@
 package practice02;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class MainClass {
+
+
 
 	// 문제1. 통장(balance)에 최초 5000원이 있다.
 	// 1원부터 통장 잔고 사이의 난수를 발생시켜서 해당 난수만큼 출금 처리하시오.
@@ -14,8 +19,22 @@ public class MainClass {
 	// 출금 전 1원, 6회 출금액 1원, 출금 후 0원
 	public static void ex01() {
 		
+		int balance = 5000;				// 통장 잔고에 5000원을 초기화
+		int count = 0;					// 출금횟수 0으로 초기화
+		 while( balance > 0  ) {		//조건이 참일때 문장을 계속 반복
+			 count++;					//while문이 반복 될 동안 count값(출금횟수)가 하나씩 늘어남
+			 int withdraw =(int)((Math.random()*balance)+1);		//random값은 0~1사이이므로 1보다 큰 난수를 만들어주려면 생성된 객체중 
+			 													//balance값을 이용해서 곱해주면 값이 0보다 커지고 소수점 자리를 떨어뜨리려고 int casting해줌
+			 
+			 System.out.println("출금 전" + balance +"원," + count + "회 출금액" + withdraw + "원, 출금 후" + (balance-=withdraw) + "원");
+			 
+			 if(balance < 0 ) {
+				 break;	
+			 }
+			 
+			 
+		 }
 	}
-	
 	// 문제2. UpDown 게임
 	// 1 ~ 10000 사이의 난수를 발생시키고 해당 난수를 사용자가 맞히는 게임이다.
 	// 입력마다 "Up!", "Down!" 메시지를 출력하시오.
@@ -29,6 +48,30 @@ public class MainClass {
 	// 정답. 총 5번만에 성공.
 	public static void ex02() {
 		
+		Random random = new Random();
+		Scanner sc = new Scanner(System.in);
+		int count = 0;	//마지막에 몇번만에 성공하는지 세어주는 변수
+		
+		int randNum = random.nextInt(1001);
+		
+		
+		while(true) {
+			System.out.println("입력 >>> ");
+			String youin = sc.next();
+			count ++;
+			if(randNum > Integer.parseInt(youin) ) {
+				System.out.println("Up!");
+				
+			}else {
+				System.out.println("Down!");
+			}if(randNum == Integer.parseInt(youin)) {
+				System.out.println("정답. 총 " + count +"번만에 성공");
+				break;
+			}
+		
+		}
+
+		
 	}
 	
 	// 문제3. 자동으로 진행되는 윷 던지기를 구현하시오. 윷이나 모가 나오면 추가로 던지시오.
@@ -40,7 +83,63 @@ public class MainClass {
 	// "모", "윷", "도", 10칸 이동한다.
 	public static void ex03() {
 		
-	}
+		// 도개걸윳모에 대한 객체를 생성해야하나,,?만들고서도 랜덤으로 어케 돌리지..?
+		//스위치 문을 이용하면 되는건가...근데 스위치문하고나서 윷모는 하ㄴ번씩 더 던질수 있는 기회를 줘야하는디..이건 if문을 써야하고..
+		//스위치문 만들기전에 랜덤 메서드를 생성해서 1~5까지의 난수를 생성한 후 거기에 대해 스위치문으로 연결해주면 될것같기도한데...
+				
+	int randNum =(int)(Math.random() *5 +1);
+		
+		if(randNum >= 4) {
+			
+		
+		}
+		switch(randNum) {
+		
+		case 1 : 
+			System.out.println("\"도\", 1칸 이동한다");
+			break;
+			
+		case 2 : 
+			System.out.println("\"개\", 2칸 이동한다");
+			break;
+			
+		case 3 : 
+			System.out.println("\"걸\", 3칸 이동한다");
+			break;
+			
+		case 4 : 
+			System.out.println("\"윷\", 4칸 이동한다");
+			break;
+			
+		case 5 : 
+			System.out.println("\"모\", 5칸 이동한다");
+			break;
+			
+		}
+
+		
+		/*String[] yut = {"", "도", "개", "걸", "윷", "모"};
+		int totalMove = 0;
+		while (true) {
+			int move = (int)(Math.random() * 5) + 1;
+			System.out.print("\"" + yut[move] + "\"");  // "도"~"모" 출력
+		/*	totalMove += move;
+			if (move <= 3) {
+				System.out.println(", " + totalMove + "칸 이동한다.");
+				break;
+			} else {
+				System.out.print(", ");
+		
+			}
+			*/
+		}
+		
+	
+		
+		
+	
+		
+	
 	
 	// 문제4. 0~9 사이 난수를 100개 생성하시오.
 	// 발생한 0~9 사이의 각 난수들이 생성된 횟수(빈도수)를 그래프화 하여 출력하시오.
@@ -56,6 +155,10 @@ public class MainClass {
 	// 8 : ####### 7
 	// 9 : ########### 11
 	public static void ex04() {
+		
+		
+		int random = (int)(Math.random()*10);
+		While ()
 		
 	}
 	
@@ -81,6 +184,15 @@ public class MainClass {
 	// 상철 70   71   73   214	
 	// 합계 180  183  189  552	
 	public static void ex05() {
+		// 뭔가 이차원 배열을 이용해야 할것만 같은기분....
+		
+		
+		String[] name = { "정숙", "미희", "상철", "합계"};
+		String[] sub = { "국어", "영어", "수학", "총점"};
+		
+		Scanner sc = new Scanner(System.in);
+		String youin = sc.next();
+		
 		
 	}
 	
@@ -95,6 +207,28 @@ public class MainClass {
 	// 겨울을 영어로 하면? >>> win
 	// 오답
 	public static void ex06() {
+		
+		String[][] arr ={
+				{"봄", "spring"},
+				{"여름", "summer"},
+				{"가을", "fall"},
+				{"겨울", "winter"},
+		};
+		
+		Scanner sc =  new Scanner(System.in);
+		for( int i = 0; i < arr.length; i ++) {
+			System.out.print(arr[i][0]+ "을 영어로 하면?");
+			String season = sc.next();
+			if(season == arr[i][1]) {
+				
+				
+			}
+			
+			
+		
+		}
+		
+		
 		
 	}
 	
@@ -187,7 +321,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex06();
 	}
 
 }

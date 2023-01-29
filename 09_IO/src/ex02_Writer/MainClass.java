@@ -135,10 +135,10 @@ public class MainClass {
 			fw = new FileWriter(file);
 			
 			// 보조 스트림 생성
-			 bw =new BufferedWriter(fw);
+			bw =new BufferedWriter(fw);
 			 
-			 // 보조 스트림을 사용해서 문자 보내기
-			 bw.write("Hello World");
+			// 보조 스트림을 사용해서 문자 보내기
+			bw.write("Hello World");
 			 
 			 System.out.println("ex03.txt 파일이 생성되었다.");
 			 

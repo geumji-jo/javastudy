@@ -1,8 +1,10 @@
 package ex03_Reader;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
 
 public class MainClass {
 
@@ -24,6 +26,7 @@ public class MainClass {
 		FileReader fr = null;
 		
 		try{
+			
 			fr = new FileReader(file);	// 입력 스트림의 이름 fr /Filereader의 reader가 통로
 			
 			int c;	// 1글자를 저장할 변수
@@ -65,33 +68,111 @@ public class MainClass {
 			fr = new FileReader(file);
 			
 			char[] cbuf = new char[5];	 // 5글자를 읽어 들이는 배열
+			int readCount = 0;	//실제로 읽은 글자의 개수
+			StringBuilder sb = new StringBuilder();
 			
-			while(true) {
+			while((readCount = fr.read(cbuf))!= -1) {
+				
+				sb.append(cbuf,0 , readCount); // 인덱스 0 부터 readCount개 글자를 sb에 추가하시오.
 				
 				// ex02.txt 읽는 과정
 				//루프	readCount   cbuf
 				//1.	5			a b c d e
 				//2.	2			f g c d e 
 				//3.    -1
-				int readCount = fr.read(cbuf);	// readCount : 읽은 글자의 개수
+			
+				//for(int i = 0 ; i < readCount; i++) {
+				//System.out.print(cbuf[i]);			
+				//	}
 				
-				if(readCount == -1) {
-					break;
-				}
-				for(int i = 0 ; i < readCount; i++) {
-					System.out.print(cbuf[i]);
 				
-					}
-				}
-			}catch(IOException e) {
+				}	//while
+			
+			
+			System.out.println(sb.toString());
+		
+		}
+		catch(IOException e) {
 				e.printStackTrace();
+		}finally {
+			
+			try {
+					if(fr != null) {
+						fr.close();
+						
+					}
+				
+			}catch(IOException e ) {
+				e.printStackTrace(); 
+			
 		}
 	}
 	
-
+}
+	
+	public static void ex03() {
+		
+		/*
+			BufferedReader의 장점
+			1. 속도가 빠르다
+			2. readLine 메소드를 사용할 수 있다.(한줄을 통째로 읽어올 수 있다)
+			
+		*/
+		
+		
+		File dir =new File("c:" + File.separator +"storage");
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		File file = new File(dir,"ex03.txt");
+		
+		BufferedReader br = null;
+		
+		try {
+			
+			br = new BufferedReader(new FileReader(file));
+			
+			
+			String line = null;
+			StringBuilder sb =  new StringBuilder();
+			while((line = br.readLine()) != null) {
+				sb.append(line);
+				
+			}
+			System.out.println(sb.toString());
+			
+			
+			
+			/*char[]  cbuf =  new char[5];
+			int readCount = 0;
+			StringBuilder sb = new StringBuilder();
+			
+			while ((readCount = br.read(cbuf)) != -1) {
+				sb.append(cbuf, 0, readCount);
+			}
+			
+			
+			System.out.println(sb.toString());
+			*/
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(br != null) {
+					br.close();
+				}
+			}catch(IOException e ) {
+				e.printStackTrace();
+			}
+		}
+	}
+		
 	public static void main(String[] args) {
 		ex02();
 		
+		
 	}
+	
 
 }
