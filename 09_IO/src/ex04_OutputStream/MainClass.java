@@ -198,6 +198,8 @@ public class MainClass {
 			person.setHeight(170.5);
 			person.setAlive(false);
 			
+			oos.writeObject(people);
+			oos.writeObject(person);
 			
 			
 			
