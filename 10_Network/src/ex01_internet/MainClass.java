@@ -1,12 +1,21 @@
 package ex01_internet;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 
 public class MainClass {
 	
@@ -111,8 +120,12 @@ public class MainClass {
 		URL url = null;
 		HttpURLConnection con = null;
 		
-		InputStream in = null;			// Daum 로그를 읽어 들이는 입력 스트림
-		FileOutputStream  out =  null;	// C:\storage\daum.npg 로 내보내는 출력 스트림
+		BufferedInputStream in = null;			// Daum 로그를 읽어 들이는 입력 스트림
+		BufferedOutputStream  out =  null;	// C:\storage\daum.npg 로 내보내는 출력 스트림
+		File file = new File("C:" + File.separator +"storage" , "daum.png");
+		
+		
+		
 		try {
 			
 			url =  new URL(apiURL);
@@ -121,8 +134,8 @@ public class MainClass {
 			int responseCode = con.getResponseCode();
 			if(responseCode == HttpURLConnection.HTTP_OK) {
 				
-				in = con.getInputStream();
-				out = new FileOutputStream("C:" + File.separator +"storage" + File.separator + "daum.png");
+				in = new BufferedInputStream(con.getInputStream());				
+				out = new BufferedOutputStream(new FileOutputStream(file));
 				
 				byte[]  b = new byte[10];
 				int readByte = 0; //10바이트가 아닐수도 있으니까 readByte를 따로 준비
@@ -148,8 +161,135 @@ public class MainClass {
 		
 	}
 	
+	public static void ex04() {
+		
+		String apiURL = "https://gdlms.cafe24.com/uflist/curri/10004/bbs/68_63d8848f7d506.txt";
+		
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		BufferedReader reader = null;
+		BufferedWriter writer = null;
+		File file = new File("C:" + File.separator +"storage", "다운로드문서.txt");
+		
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			
+			String message = null;
+			int responseCode = con.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));	
+				file = new File("C:" + File.separator +"storage", "다운로드문서.txt");
+				message = "다운로드 성공";
+
+			}else {
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));	
+				file = new File("C:" + File.separator +"storage", "다운로드실패.html");
+				message = "다운로드 실패";
+			}
+			
+			StringBuilder sb = new StringBuilder();
+			char[] cbuf =  new char[2];
+			int readCount = 0; 
+			
+			while((readCount = reader.read(cbuf)) != -1) {
+				sb.append(cbuf, 0 , readCount);
+				
+			}
+			writer =  new BufferedWriter(new FileWriter(file));
+			writer.write(sb.toString());
+			
+			writer.close();
+			reader.close();
+			con.disconnect();
+			
+			System.out.println(message);
+			
+		}catch(MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+			
+		}
+	}
+	
+	public static void ex05() {
+		
+	/*
+	 	인코딩(암호화) : 원본 데이터를 UTF-8 방식으로 암호화
+	 	디코딩(복호화) : UTF-8 방식으로 암호화된 데이터를 복원
+	 	
+	 */
+	
+	String data = "한글 english 12345 !@#$+-";
+	try {
+		
+		//인코딩(주소창에 데이터 포함해서 보낼때 인코딩 필요)
+		String encodeData = URLEncoder.encode(data, "UTF-8");
+		System.out.println(encodeData);
+		
+		// 디코딩
+		String decodeData = URLDecoder.decode(encodeData, "UTF-8");
+		System.out.println(decodeData);
+		
+		
+	}catch (UnsupportedEncodingException e ) {
+		System.out.println("인코딩 실패");
+		
+	}
+		
+	}
+	
+	
+	public static void ex06() {
+		
+	// 1시간마다 갱신되는 전국 날씨 정보
+		
+		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
+		
+		// storage/sfx_web_map.xml로 다운로드 받기
+		
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		BufferedReader reader = null;
+		BufferedWriter writer = null;
+		File file = new File("C:" + File.separator +"storage", "sfx_web_map.xml");
+		
+		try {
+
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			int responceCode = con.getResponseCode();
+			if( responceCode == HttpURLConnection.HTTP_OK) {
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));	
+				file = new File("C:" + File.separator + "storage", "다운로드 성공");
+				
+			}else {
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				file = new File("C:" +  File.separator + "storage", "다운로드 실패");
+				
+				
+				
+			}
+			
+		}catch(IOException e) { 
+			e.printStackTrace();
+			
+			
+		}
+		
+		
+	}
+		
+
 	public static void main(String[] args) {
-		ex03();
+		ex06();
 		
 	}
 

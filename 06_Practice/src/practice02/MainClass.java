@@ -56,7 +56,7 @@ public class MainClass {
 		
 		
 		while(true) {
-			System.out.println("입력 >>> ");
+			System.out.print("입력 >>> ");
 			String youin = sc.next();
 			count ++;
 			if(randNum > Integer.parseInt(youin) ) {
@@ -321,7 +321,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex06();
+		ex01();
 	}
 
 }
