@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class MainClass {
 
-	public static void ex01() {
+	public static void ex01() {      //ex01과 ex02가 같이 있어야 DB에 접속이 가능하다
 		
 		// 클래스를 로드하는 방법(메모리에 로드한다 :  사용하겠다)
 		//어떤 클래스를 나 사용할게요~하고 메모리에 로드
