@@ -34,7 +34,7 @@ public class JSONMainClass {
 		List<Map<String, Object>>products =  new ArrayList<Map<String, Object>>();
 		for(int i  =0;i<arr.length(); i++) {
 			JSONObject obj = arr.getJSONObject(i);
-			products.add(obj.toMap()); 	//JSONObject obj를 Map으로 바꿔서 List에 저장하기.
+			products.add(obj.toMap()); 	//JSONObject obj를 Map으로 바꿔서 List에 저장하기. //add는 데이터를 순서대로 저장...?// map은 put .. list는 add
 			
 		}
 		

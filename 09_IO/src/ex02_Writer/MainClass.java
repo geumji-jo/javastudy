@@ -12,7 +12,7 @@ public class MainClass {
 	/*
 		 스트림(stream)
 		 1. 통로의 개념이다.
-		 2.일방 통행이다.
+		 2. 일방 통행이다.
 		 	1) 입력 스트림 : 입력만 받을 수 있다.
 		 	2) 출력 스트림 : 출력만 할 수 있다.
 		 	
@@ -56,6 +56,8 @@ public class MainClass {
 		
 			
 			System.out.println("ex01.txt 파일이 생성되었다.");
+			
+			
 		}catch(IOException e ) {
 			e.printStackTrace(); //개발할때 캐치코드
 			
