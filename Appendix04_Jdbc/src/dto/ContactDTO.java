@@ -1,7 +1,7 @@
 package dto;
 
 public class ContactDTO {
-	
+	 
 	
 	private int contact_no;
 	private String name;
@@ -9,6 +9,7 @@ public class ContactDTO {
 	private String email;
 	private String address;
 
+	
 
 	//생성자 만들기
 	public ContactDTO() {}
