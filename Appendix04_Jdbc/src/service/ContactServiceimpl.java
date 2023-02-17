@@ -35,6 +35,7 @@ public class ContactServiceimpl implements ContactService {
 		System.out.print("신규 연락처 주소 >>> ");
 		String address =sc.next();
 		
+		
 		ContactDTO contact = new ContactDTO();
 		contact.setName(name);
 		contact.setTel(tel);
