@@ -32,7 +32,7 @@ public class ContactController {
 			String choice = sc.next();
 			switch (choice) {
 			case "1":
-				service.addContact();
+				service.addContact(); 
 				break;
 			case "2":
 				service.removeContact();
@@ -54,10 +54,6 @@ public class ContactController {
 				
 			}
 			
-			
-
-		
-	
 		
 	}	
 		

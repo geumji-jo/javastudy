@@ -8,7 +8,7 @@ import dto.ContactDTO;
 
 public class ContactServiceimpl implements ContactService {
 
-	
+	 
 	/***************1.field ***********/
 	private Scanner sc;
 	private ContactDAO dao;
